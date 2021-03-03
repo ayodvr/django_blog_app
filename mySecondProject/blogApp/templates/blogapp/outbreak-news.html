@@ -1,0 +1,105 @@
+{% extends 'blogapp/base.html' %}
+{% block body_block %}
+{% load static %}
+
+<section class="rn-search-form-big rn-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                
+                </div>
+            </div>
+        </div>
+</section>
+    <!-- Preloader -->
+    <div id="preloader-wrapper">
+        <div class="preloader-wave-effect"></div>
+        <div class="preloader-text">Loading</div>
+    </div>
+    <!-- Breadcrumb -->
+    <section>
+        <div class="container">
+            <div class="page-header text-center py-md">
+                <h1>Outbreak News</h1>
+            </div>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'post_list' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Outbreak News</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Corona news -->
+    <section class="corona-updates-section style-2 mt-0 py-lg">
+        <div class="container">
+            <div class="corona-updates-inner">
+                <div class="section-header text-center mb-4 mb-md-5">
+                    <h2 class="mb-1">Covid-19 Coronavirus Pandemic</h2>
+                    <p class="update-date"><em><span>Live</span> - Updates on every 10 minutes</em></p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 statistics-card card-info" data-aos="fade-up">
+                        <div class="statistics-card-inner">
+                            <h3 class="data-header" id="totalCases"></h3>
+                            <p>Total cases</p>
+                            <img src="{% static 'blogapp/assetss/img/shapes/1.png' %}" alt="Image not found" class="img-fluid shape">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 statistics-card card-danger" data-aos="fade-up" data-aos-delay="50">
+                        <div class="statistics-card-inner">
+                            <h3 class="data-header" id="totalDeaths"></h3>
+                            <p>Total deaths</p>
+                            <img src="{% static 'blogapp/assetss/img/shapes/1.png' %}" alt="Image not found" class="img-fluid shape">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 statistics-card card-success" data-aos="fade-up" data-aos-delay="100">
+                        <div class="statistics-card-inner">
+                            <h3 class="data-header" id="totalRecovered"></h3>
+                            <p>Total recovered</p>
+                            <img src="{% static 'blogapp/assetss/img/shapes/1.png' %}" alt="Image not found" class="img-fluid shape">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 statistics-card card-warning" data-aos="fade-up" data-aos-delay="150">
+                        <div class="statistics-card-inner">
+                            <h3 class="data-header" id="newCases"></h3>
+                            <p>New cases</p>
+                            <img src="{% static 'blogapp/assetss/img/shapes/1.png' %}" alt="Image not found" class="img-fluid shape">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corona country statistics -->
+    <section class="corona-country-stats-section pb-lg">
+        <div class="container">
+            <div class="section-header text-center mb-4 mb-md-5">
+                <h2 class="heading">Coronavirus Live Statistics</h2>
+            </div>
+            <table id="countries_stat" class="table table-striped table-hover country-stats-table">
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Total Cases</th>
+                        <th>Total Deaths</th>
+                        <th>Total Recovered</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </section>
+
+    <!-- Corona map -->
+    <div class="corona-map-section mt-0 pb-lg">
+        <div class="container">
+            <div class="text-center mx-auto mt-4 mt-md-5">
+                <a href="https://www.worldometers.info/coronavirus/" target="_blank" class="text-link">Check Live
+                    Situation Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'blogapp/base.html' %}
+{% block body_block %}
+{% load static %}
+
+
+<section class="rn-search-form-big rn-section">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+		
+		</div>
+	</div>
+</div>
+</section>
+
+<div class="rn-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+                    <div class="rn-section-title"></div>	
+                        <h1>Are you sure you want to delete: {{ post.title }}</h1>
+                        <div class="container">
+                        <form method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-danger">Delete</button>
+                        <a href="{% url 'post_list' %}" class="btn btn-primary">Cancel</a>
+                        </form>
+                        
+                        </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+	

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- Mirrored from demo.kitthemes.com/html/rentnow/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2020 14:53:12 GMT -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>RentNow - Responsive Car Rental Template</title>
+
+<!-- Preloader CSS-->
+<style>#preloader:after,#preloader:before{content:"";display:block;left:-1px;top:-1px}#preloader-overlayer,#preloader:after,#preloader:before{position:absolute;height:100%;width:100%}#preloader-overlayer{position:fixed;top:0;left:0;background-color:#112E3B;z-index:999}#preloader{height:40px;width:40px;position:fixed;top:50%;left:50%;margin-top:-20px;margin-left:-20px;z-index:9999}#preloader:before{-webkit-animation:rotation 1s linear infinite;animation:rotation 1s linear infinite;border:2px solid #42DB0C;border-top:2px solid transparent;border-radius:100%}#preloader:after{border:1px solid rgba(255,255,255,.1);border-radius:100%}@media only screen and (min-width:768px){#preloader{height:60px;width:60px;margin-top:-30px;margin-left:-30px}#preloader:before{left:-2px;top:-2px;border-width:2px}}@media only screen and (min-width:1200px){#preloader{height:80px;width:80px;margin-top:-40px;margin-left:-40px}}@-webkit-keyframes rotation{from{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}@keyframes rotation{from{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}</style>
+
+<!--
+All CSS Codes Loaded
+ <!-- Required meta tags -->
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+ <!-- Template meta tags -->
+ <meta name="description" content="coronavirus prevention and awareness template">
+ <meta name="keywords" content="Coronavirus,COVID-19,Medical,Prevention,Awareness,Live Report">
+ <meta name="author" content="Marvel Theme">
+
+ <!-- Favicon -->
+ <!-- <link rel="icon" type="image/png" href="{% static 'blogapp/assetss/img/logo/favicon.png' %}"> -->
+
+ <!-- Title -->
+ <title>Covira - coronavirus prevention and awareness template</title>
+
+ <!-- Bootstrap CSS -->
+ <link rel="stylesheet" href="{% static 'blogapp/assetss/css/bootstrap.min.css' %}">
+
+ <!-- Icon Font -->
+ <link rel="stylesheet" href="{% static 'blogapp/assetss/css/line-awesome.min.css' %}">
+
+ <!-- Google Font -->
+ <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap"
+     rel="stylesheet">
+
+ <!-- AOS -->
+ <link rel="stylesheet" href="{% static 'blogapp/assetss/css/aos.css' %}">
+
+ <!-- DataTable -->
+ <link rel="stylesheet" type="text/css"
+     href="../../../../../cdn.datatables.net/v/bs4/dt-1.10.21/fh-3.1.7/r-2.2.4/sc-2.0.2/datatables.min.css" />
+
+ <!-- Template CSS -->
+ <link rel="stylesheet" href="{% static 'blogapp/assetss/css/style.css' %}">
+
+<!-- Custom CSS for end users -->
+ <link rel="stylesheet" href="{% static 'blogapp/assetss/css/custom.css' %}">
+<link rel="stylesheet" href="{% static 'blogapp/assets/libs/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'blogapp/assets/libs/fontawesome/css/fontawesome-all.min.css' %}">
+<link rel="stylesheet" href="{% static 'blogapp/assets/libs/linearicons/linearicons.css' %}">
+<link rel="stylesheet" href="{% static 'blogapp/assets/css/rentnow-icons.css' %}">
+<link rel="stylesheet" href="{% static 'blogapp/assets/libs/flatpickr/flatpickr.min.css' %}">
+<link rel="stylesheet" href="{% static 'blogapp/assets/css/magnific-popup.css'%}">
+<link rel="stylesheet" href="{% static 'blogapp/assets/css/style.css'%}">
+
+<!-- Google Map JS-->
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCOdKtT5fapH3_OfhV3HFeZjqFs4OfNIew"></script>
+<style>
+    .errorlist li{
+        color:red;
+        list-style-type: none;
+    }
+</style>
+</head>
+<body class="rn-preloader">
+<div id="preloader"></div>
+<div id="preloader-overlayer"></div>
+{% include 'blogapp/navbars/header.html' %}
+
+    {% block body_block %}
+    
+    {% endblock %}
+
+
+{% include 'blogapp/navbars/footer.html' %}
+<script>
+    function handleFormSubmit(){
+        
+        var fullname = document.forms.myform['fullname'].value
+        var email    = document.forms.myform['email'].value
+        var message  = document.forms.myform['message'].value
+
+        if( fullname == ""){
+            alert("Name can't be empty")
+            document.forms.myform['fullname'].focus()
+            return false
+        }
+
+        if( email == ""){
+            alert("Email can't be empty")
+            document.forms.myform['email'].focus()
+            return false
+        }
+
+        if( message == ""){
+            alert("Message can't be empty")
+            document.forms.myform['message'].focus()
+            return false
+        }
+
+        return true
+    }
+</script>
+
+<script src="{% static 'blogapp/assets/js/jquery.min.js' %}"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{% static 'blogapp/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'blogapp/assets/libs/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'blogapp/assets/libs/flatpickr/flatpickr.min.js' %}"></script>
+<script src="{% static 'blogapp/assets/js/starrr.min.js' %}"></script>
+<script src="{% static 'blogapp/assets/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'blogapp/assets/js/scripts.js' %}"></script>
+<script>
+    $( function() {
+      $( ".datepicker" ).datepicker();
+    });
+</script>
+  <!-- jQuery first, then Bootstrap bundle JS, then others -->
+  <script src="{% static 'blogapp/assetss/js/jquery-3.5.1.min.js' %}"></script>
+  <script src="{% static 'blogapp/assetss/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugins -->
+  <script src="{% static 'blogapp/assetss/js/jquery-ui.min.js' %}"></script>
+  <script src="../../../../../unpkg.com/%40lottiefiles/lottie-player%400.5.1/dist/lottie-player.js"></script>
+  <script src="{% static 'blogapp/assetss/js/corona-script.js' %}"></script>
+  <script src="{% static 'blogapp/assetss/js/aos.js' %}"></script>
+  <script src="{% static 'blogapp/assetss/js/simpleParallax.min.js' %}"></script>
+  <script src="{% static 'blogapp/assetss/js/parallax.min.js' %}"></script>
+  <script type="text/javascript"
+      src="../../../../../cdn.datatables.net/v/bs4/dt-1.10.21/fh-3.1.7/r-2.2.4/sc-2.0.2/datatables.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhrdEzlfpnsnfq4MgU1e1CCsrvVx2d59s"></script>
+  <script src="{% static 'assetss/js/gmaps.js' %}"></script>
+  <script src="{% static 'assetss/js/ajax-mail.js' %}"></script>
+  <script src="{% static 'blogapp/assetss/js/ajax-subscribe.js' %}"></script>
+
+  <!-- Template JS -->
+  <script src="{% static 'blogapp/assetss/js/scripts.js' %}"></script>
+</body>
+
+<!-- Mirrored from demo.kitthemes.com/html/rentnow/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2020 14:53:33 GMT -->
+</html>

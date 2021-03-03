@@ -1,0 +1,335 @@
+{% extends 'blogapp/base.html' %}
+{% block body_block %}
+{% load static %}
+		<!-- Slider-->
+		<div class="rn-carousel carousel slide" id="carouselExampleControls" data-ride="carousel">
+			<div class="carousel-inner">
+				{% for slide in post_list %}
+				<div class="carousel-item {% if forloop.counter0 == 0 %} beactive {% endif %}">
+					<div class="carousel-caption">
+						<h2 class="rn-fade-bottom mb-25">{{ slide.title }}</h2>
+						<p class="rn-fade-bottom rn-caption-item-2 mb-35">{{ slide.text | slice:'150' }}</p>
+						<a class="btn btn-main btn-lg rn-fade-bottom rn-caption-item-3" href="{% url 'post_detail' slide.id %}">Read More</a>
+					</div>
+					<div class="rn-slider-overlayer"></div>
+					<img class="d-block w-100" src="/media/{{ slide.featured_image }}" alt="slide" style="width: 1200px;height: 800px;">
+				</div>
+				{% endfor %}
+			</div>
+			<!-- Slider Controls -->
+			<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				<span class="lnr lnr-chevron-left" aria-hidden="true"></span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				<span class="lnr lnr-chevron-right" aria-hidden="true"></span>
+			</a>
+			</div>
+			<!-- End slider-->
+
+<!-- Car Search Form-->
+<section class="rn-search-form-big rn-section">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+
+			<!-- Section Title-->
+			<div class="rn-section-title  rn-title-bg-color-white-10 rn-title-color-white">
+				<h2 class="rn-title">Blog News</h2>
+				<span class="rn-title-bg">Blog News</span>
+			</div>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<!-- <div class="rn-big-search-form rn-big-search-form-dark">
+					<div class="row">
+						<div class="col-lg-3 col-sm-6">
+							<div class="rn-icon-input">
+								<i class="fas fa-map-marker-alt"></i>
+								<input type="text" placeholder="Pickup Location">
+							</div>
+						</div>
+						<div class="col-lg-3 col-sm-6">
+							<div class="rn-icon-input">
+								<i class="fas fa-map-marker-alt"></i>
+								<input type="text" placeholder="Drop Location">
+							</div>
+						</div>
+						<div class="col-lg-3 rn-date-time-input">
+							<div class="row">
+								<div class="col-lg-7 col-md-8 col-8">
+									<div class="rn-icon-input">
+										<i class="far fa-calendar-alt"></i>
+										<input type="text" placeholder="Pickup Date" id="pickup-date">
+									</div>
+								</div>
+								<div class="col-lg-5 col-md-4 col-4">
+									<div class="rn-icon-input">
+										<i class="far fa-clock"></i>
+										<input type="text" placeholder="Time" id="pickup-time">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 rn-date-time-input">
+							<div class="row">
+								<div class="col-lg-7 col-md-8 col-8">
+									<div class="rn-icon-input">
+										<i class="far fa-calendar-alt"></i>
+										<input type="text" placeholder="Drop Date" id="drop-date">
+									</div>
+								</div>
+								<div class="col-lg-5 col-md-4 col-4">
+									<div class="rn-icon-input">
+										<i class="far fa-clock"></i>
+										<input type="text" placeholder="Time" id="drop-time">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="text-center">
+						<button class="btn btn-orange btn-lg mt-30 btn-shadow" type="submit">
+							<i class="fas fa-search"></i> Find Now
+						</button>
+					</div>
+				</form>
+			</div> -->
+
+		</div>
+	</div>
+</div>
+<!-- Section Shape-->
+<div class="rn-shape rn-shape-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+<path class="rn-shape-fill" d="M500.2,94.7L0,0v100h1000V0L500.2,94.7z"/>
+</svg>
+</div>
+</section>
+<!-- End Car Search Form-->
+
+<div class="rn-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 rn-post-list rn-grid-post-col-2">
+				<div class="row">
+					{% for post in post_list %}
+					<div class="col-md-6">
+						<div class="rn-post-item rn-post-size-sm">
+							<div class="rn-post-item-thumb">
+								<a href="{% url 'post_detail' post.id %}">
+									<img class="img-fluid" style="width: 300px; height:300px;"src="" alt="A standard blog post with image" 
+									srcset="/media/{{ post.featured_image }} 1x, /media/{{ post.featured_image }} 2x"/>
+								</a>
+							</div>
+							<div class="rn-post-item-header">
+								<div class="rn-post-date">
+									<div class="rn-post-date-inner">
+										<div class="rn-post-date-d">{{ post.published_date | date:'d' }}</div>
+										<div class="rn-post-date-m-y">{{ post.published_date | date:'M, y' }}</div>
+									</div>
+								</div>
+								<div class="rn-post-item-title-meta">
+									<div class="rn-post-item-title-meta-inner">
+										<div class="rn-post-item-meta">
+											<!-- <span class="rn-post-item-categories">In 
+												<a href="#">News</a>
+											</span> -->
+											<span class="rn-post-item-author">By 
+												<a href="#">{{ post.author.username }}</a>
+											</span>
+										</div>
+										<h3 class="rn-post-item-title">
+											<a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+										</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+
+				<!-- Post Pagination-->
+				<nav class="rn-pagination rn-pagination-center">
+					<ul>
+						<li>
+							<a href="#">
+								<i class="fas fa-angle-left"></i>
+							</a>
+						</li>
+						<li>
+							<a class="rn-active" href="#">1</a>
+						</li>
+						<li>
+							<a href="#">2</a>
+						</li>
+						<li>
+							<a href="#">3</a>
+						</li>
+						<li>
+							<a href="#">4</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fas fa-angle-right"></i>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-lg-4">
+
+				<!-- Sidebar-->
+				<aside class="rn-widget-area" id="secondary">
+					<!-- Widget Item-->
+					<section class="rn-widget">
+						<h2 class="rn-widget-title">Categories</h2>
+						<div class="rn-widget-content">
+							<ul>
+								<li>
+									<a href="#">Lifestyle</a>
+								</li>
+								<li>
+									<a href="#">Travel</a>
+								</li>
+								<li>
+									<a href="#">Fashion</a>
+								</li>
+								<li>
+									<a href="#">Music</a>
+								</li>
+								<li>
+									<a href="#">Branding</a>
+								</li>
+							</ul>
+						</div>
+					</section>
+					<!-- End Widget Item-->
+
+
+					<!-- Widget Item-->
+					<section class="rn-widget">
+						<h2 class="rn-widget-title">Recent Posts</h2>
+						<div class="rn-widget-content">
+							<ul class="rn-recent-posts">
+								<li>
+
+									<!-- Extra Small Post-->
+									<div class="rn-recent-post-item">
+										<div class="rn-recent-post-item-thumb">
+											<a href="#">
+												<img class="img-fluid" src="{% static 'blogapp/assets/images/blog-item-xs-1.jpg' %}" alt="A standard blog post with image" srcset="{% static 'blogapp/assets/images/blog-item-xs-1.jpg' %} 1x, {% static 'blogapp/assets/images/blog-item-xs-1@2x.jpg' %} 2x"/>
+											</a>
+										</div>
+										<div class="rn-recent-post-item-info">
+											<div class="rn-recent-post-item-meta">
+												<span class="rn-recent-post-item-categories">In 
+													<a href="#">News</a>
+												</span>
+												<span class="rn-recent-post-item-author">At 
+													<a href="#">15 May, 2018</a>
+												</span>
+											</div>
+											<div class="rn-recent-post-item-title">
+												<h3>
+													<a href="#">A standard blog post with image</a>
+												</h3>
+											</div>
+										</div>
+									</div>
+									<!-- End Extra Small Post-->
+
+								</li>
+								<li>
+
+									<!-- Extra Small Post-->
+									<div class="rn-recent-post-item">
+										<div class="rn-recent-post-item-thumb">
+											<a href="#">
+												<img class="img-fluid" src="{% static 'blogapp/assets/images/blog-item-xs-2.jpg' %}" alt="A standard blog post with image" srcset="{% static 'blogapp/assets/images/blog-item-xs-2.jpg' %} 1x, {% static 'blogapp/assets/images/blog-item-xs-2@2x.jpg' %} 2x"/>
+											</a>
+										</div>
+										<div class="rn-recent-post-item-info">
+											<div class="rn-recent-post-item-meta">
+												<span class="rn-recent-post-item-categories">In 
+													<a href="#">News</a>
+												</span>
+												<span class="rn-recent-post-item-author">At 
+													<a href="#">15 May, 2018</a>
+												</span>
+											</div>
+											<div class="rn-recent-post-item-title">
+												<h3>
+													<a href="#">A standard blog post with image</a>
+												</h3>
+											</div>
+										</div>
+									</div>
+									<!-- End Extra Small Post-->
+
+								</li>
+								<li>
+
+									<!-- Extra Small Post-->
+									<div class="rn-recent-post-item">
+										<div class="rn-recent-post-item-thumb">
+											<a href="#">
+												<img class="img-fluid" src="{% static 'blogapp/assets/images/blog-item-xs-3.jpg' %}" alt="A standard blog post with image" srcset="{% static 'blogapp/assets/images/blog-item-xs-3.jpg' %} 1x, {% static 'blogapp/assets/images/blog-item-xs-3@2x.jpg' %} 2x"/>
+											</a>
+										</div>
+										<div class="rn-recent-post-item-info">
+											<div class="rn-recent-post-item-meta">
+												<span class="rn-recent-post-item-categories">In 
+													<a href="#">News</a>
+												</span>
+												<span class="rn-recent-post-item-author">At 
+													<a href="#">15 May, 2018</a>
+												</span>
+											</div>
+											<div class="rn-recent-post-item-title">
+												<h3>
+													<a href="#">A standard blog post with image</a>
+												</h3>
+											</div>
+										</div>
+									</div>
+									<!-- End Extra Small Post-->
+
+								</li>
+							</ul>
+						</div>
+					</section>
+					<!-- End Widget Item-->
+
+
+					<!-- Widget Item-->
+					<!-- <section class="rn-widget">
+						<h2 class="rn-widget-title">Tags</h2>
+						<div class="rn-widget-content">
+							<div class="tags">
+								<a href="#">video</a>
+								<a href="#">audio</a>
+								<a href="#">images</a>
+								<a href="#">javascript</a>
+								<a href="#">php</a>
+								<a href="#">wordpress</a>
+								<a href="#">travel</a>
+								<a href="#">music</a>
+								<a href="#">python</a>
+								<a href="#">ui/ux</a>
+								<a href="#">cars</a>
+							</div>
+						</div>
+					</section> -->
+					<!-- End Widget Item-->
+
+				</aside>
+				<!-- End Sidebar-->
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+	

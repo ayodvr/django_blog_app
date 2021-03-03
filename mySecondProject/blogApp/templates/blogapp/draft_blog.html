@@ -1,0 +1,53 @@
+{% extends 'blogapp/base.html' %}
+{% block body_block %}
+{% load static %}
+
+
+<section class="rn-search-form-big rn-section">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+		
+		</div>
+	</div>
+</div>
+</section>
+<div class="rn-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				{% if user.is_superuser %}
+				<div class="row">
+                    <div class="rn-section-title"></div>
+                        <h2 class="rn-title">Posts(Draft)</h2>
+					</div>	
+                    <table class="table table-striped">
+                        <thead class="text-center">
+                            <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            {% for draft in drafts %}
+                            <tr>
+                            <td>{{ draft.id }}</td>
+                            <td>{{ draft.title}}</td>
+                            <td><a href="{% url 'publish' draft.pk %}"><input type="button" class="btn btn-success" value="Publish"></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+					</table>
+					{% else %}
+					<div>
+						<h3 class="text-center">Your post have been created, and it is under review by the Admin</h3>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+</div>
+</div>
+{% endblock %}
+	

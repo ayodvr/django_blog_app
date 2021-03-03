@@ -1,0 +1,52 @@
+{% extends 'blogapp/base.html' %}
+{% block body_block %}
+{% load static %}
+<!-- Page Title-->
+{% if user.is_authenticated %}
+<div class="rn-page-title">
+<div class="rn-pt-overlayer"></div>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="rn-page-title-inner">
+				<h1>User Profile</h1>
+				<!-- <p>Cras eros lorem, rhoncus ac risus sit amet, fringilla ultrices purus.</p> -->
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- End Page Title-->
+
+<!-- Page Content-->
+<div class="rn-section rn-lightbox-images">
+<div class="container">
+	<div class="row">
+		<div class="col-6">
+			<a class="rn-lightbox-image" href="/media/{{ user_detail.complete.avatar }}">
+				<img class="img-fluid" src="/media/{{ user_detail.complete.avatar }}" alt="" srcset="/media/{{ user_detail.complete.avatar }} 1x, /media/{{ user_detail.complete.avatar }} 2x">
+			</a>
+		</div>
+		<div class="col-6">
+			<h3>FirstName</h3> 
+			<p>{{ user_detail.first_name }}</p>
+			<h3>LastName</h3>
+			<p>{{ user_detail.last_name }}</p>
+			<h3>Email</h3>
+			<p>{{ user_detail.email }}</p>
+			<h3>Bio</h3>
+			<p>{{ user_detail.complete.bio }}</p>
+			<h3>Address</h3>
+			<p>{{ user_detail.complete.address }}</p>
+		</div>
+	</div>
+	{% if not user.complete %}
+	<a href="{% url 'profile' %}"><input type="submit" class="btn btn-success" value="Complete profile"></a>
+	{% else %}
+	<a href="{% url 'update_profile' user_detail.id %}"><input type="submit" class="btn btn-primary" value="Edit profile"></a>
+	{% endif %}
+	<a href="{% url 'delete_profile' user_detail.id %}"><input type="submit" class="btn btn-danger float-right" value="Delete profile"></a>
+</div>
+</div>
+{% endif %}
+{% endblock %}

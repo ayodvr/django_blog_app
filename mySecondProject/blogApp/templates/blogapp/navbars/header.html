@@ -1,0 +1,174 @@
+{% load static %}
+<header class="rn-header">
+    <!-- Topbar-->
+    <div class="rn-topbar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-sm-5 col-lg-3">
+
+                    <!-- Tobar Social-->
+                    <ul class="rn-social">
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-12 col-sm-7 col-lg-9">
+                   {% if user.is_authenticated %}
+                   <div class="rn-icon-contents">
+                <div class="rn-email rn-icon-content">
+                    <div class="rn-info">
+                        <ul>
+                            <li>
+                                <h5 style="color: whitesmoke;">Welcome, {{ user.username }}</h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                   <div class="rn-address rn-icon-content">
+                    <div class="rn-info">
+                        <ul>
+                            <li>
+                                <h5><a href="{% url 'logout' %}" style="color: whitesmoke;">Log out</a></h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
+                   </div>
+                  
+                   {% else %}
+                    <div class="rn-icon-contents">
+                        <div class="rn-email rn-icon-content">
+                            <div class="rn-info">
+                                <ul>
+                                    <li>
+                                        <h5><a href="{% url 'login' %}" style="color: whitesmoke;">Log in</a> </h5>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="rn-address rn-icon-content">
+                            <div class="rn-info">
+                                <ul>
+                                    <li>
+                                        <h5><a href="{% url 'register' %}" style="color: whitesmoke;">Register</a></h5>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Topbar-->
+
+
+    <!-- Menubar-->
+    {% if user.is_authenticated or not user.authenticated %}
+    <div class="rn-menubar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <!-- Logo-->
+                    <a class="brand-name" href="{% url 'post_list' %}">
+                        <h2 style="color:whitesmoke;">RantzBlog</h2>
+                    </a>
+                </div>
+                <div class="col-8">
+                    <nav class="rn-navbar-container">
+
+                        <!-- Navbar Toggle Button for Only Tablet and Phone-->
+                        <button class="rn-navbar-toggler" id="rn-navbar-toggler">
+                            <span class="rn-navbar-toggler-bar"></span>
+                            <span class="rn-navbar-toggler-bar"></span>
+                            <span class="rn-navbar-toggler-bar"></span>
+                        </button>
+
+                        <!-- Main Nav Menu-->
+                        <ul class="rn-navbar">
+                            <li class="active">
+                                <a href="{% url 'post_list' %}">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Entertainment 
+                            </li>
+                            <li>
+                                <a href="#">Sports
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">News</a>
+                            </li>
+                            <!-- <li>
+                                <a href="#">Politics 
+                            </li> -->
+                            <li>
+                                <a href="#">Covid-19 updates
+                                    <i class="lnr lnr-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'covid9ja' %}">Nigeria Cases</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'covid19' %}">World Cases</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'prevention' %}">Prevention / Awareness</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {% if user.is_authenticated %}
+                            <li>
+                                <a href="#">Profile 
+                                    <i class="lnr lnr-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'user_detail' user.id %}">View profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'create_post' %}">Add Post</a>
+                                    </li>
+                                    {% if user.is_superuser %}
+                                    <li>
+                                        <a href="{% url 'draft_list' %}">Drafts</a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                            {% endif %}
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</header>

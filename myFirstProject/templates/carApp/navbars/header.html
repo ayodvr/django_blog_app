@@ -1,0 +1,155 @@
+{% load static %}
+<header class="rn-header">
+    <!-- Topbar-->
+    <div class="rn-topbar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-sm-5 col-lg-3">
+
+                    <!-- Tobar Social-->
+                    <ul class="rn-social">
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-12 col-sm-7 col-lg-9">
+
+                    <!-- Topbar Contact with Icon-->
+                    <div class="rn-icon-contents">
+                        <div class="rn-phone rn-icon-content">
+                            <div class="rn-icon">
+                                <i class="lnr lnr-phone"></i>
+                            </div>
+                            <div class="rn-info">
+                                <ul>
+                                    <li>(954)-944-1250</li>
+                                    <li>(954)-944-1251</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="rn-email rn-icon-content">
+                            <div class="rn-icon">
+                                <i class="lnr lnr-envelope"></i>
+                            </div>
+                            <div class="rn-info">
+                                <ul>
+                                    <li>support@example.coms</li>
+                                    <li>sale@example.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="rn-address rn-icon-content">
+                            <div class="rn-icon">
+                                <i class="lnr lnr-map-marker"></i>
+                            </div>
+                            <div class="rn-info">
+                                <ul>
+                                    <li>1425 Pointe Lane, Miami</li>
+                                    <li>Florida – 33169, USA</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Topbar-->
+
+
+    <!-- Menubar-->
+    <div class="rn-menubar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <!-- Logo-->
+                    <a class="brand-name" href="{% url 'index' %}">
+                        <img class="img-fluid" src="{% static 'carApp/assets/images/logo.svg' %}" alt="Logo">
+                    </a>
+                </div>
+                <div class="col-8">
+                    <nav class="rn-navbar-container">
+
+                        <!-- Navbar Toggle Button for Only Tablet and Phone-->
+                        <button class="rn-navbar-toggler" id="rn-navbar-toggler">
+                            <span class="rn-navbar-toggler-bar"></span>
+                            <span class="rn-navbar-toggler-bar"></span>
+                            <span class="rn-navbar-toggler-bar"></span>
+                        </button>
+
+                        <!-- Main Nav Menu-->
+                        <ul class="rn-navbar">
+                            <li class="active">
+                                <a href="{% url 'index' %}">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Cars 
+                                    <i class="lnr lnr-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'cars' %}">Car List</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Pages 
+                                    <i class="lnr lnr-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'about' %}">About Us</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{% url 'service' %}">Service</a>
+                            </li>
+                            <li>
+                                <a href="#">Blog 
+                                    <i class="lnr lnr-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'blog' %}">Blog List</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{% url 'contact' %}">Contact</a>
+                            </li>
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Menubar-->
+
+</header>

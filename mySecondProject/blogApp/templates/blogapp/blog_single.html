@@ -1,0 +1,152 @@
+{% extends 'blogapp/base.html' %}
+{% block body_block %}
+{% load static %}
+
+<!-- Blog Single Post-->
+<main class="rn-blog-single">
+<article>
+<!-- Single Post Header-->
+<header style="background-image: url(/media/{{post_detail.featured_image}});">
+	<h1 class="rn-single-post-title">{{post_detail.title}}</h1>
+	<div class="rn-single-post-meta">
+		<span>In 
+			<a href="#">News</a>
+		</span>
+		<span>By 
+			<a href="#">{{ post_detail.author.username }}</a>
+		</span>
+		<span>At 
+			<a href="#">15 May, 2018</a>
+		</span>
+	</div>
+</header>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<!-- Single Post Content-->
+			<div class="rn-single-post-content">
+				<p>{{ post_detail.text }}</p>
+			</div>
+		</div>
+	</div>
+	{% if user.is_authenticated %}
+	{% if user.id == post_detail.author.id %}
+	<a href="{% url 'update_post' post_detail.pk %}"><input type="submit" class="btn btn-primary" value="Edit"></a>
+	<a href="{% url 'delete_post' post_detail.pk %}"><input type="submit" class="btn btn-danger float-right" value="Delete"></a>
+	{% endif %}
+	{% endif %}
+</div>
+<!-- Single Post Footer-->
+<footer>
+	<!-- <div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="rn-single-post-tags tagcloud">
+					<a href="#" rel="tag">rooms</a>
+					<a href="#" rel="tag">video</a>
+					<a href="#" rel="tag">image</a>
+					<a href="#" rel="tag">images</a>
+					<a href="#" rel="tag">cars</a>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</footer>
+</article>
+</main>
+<!-- End Blog Single Post-->
+
+<!-- Single Post Social Share Buttons-->
+<!-- <div class="rn-single-post-social">
+<div class="container">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="rn-single-post-social-inner">
+			<ul class="rn-post-sharing">
+				<li>
+					<a href="#">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fab fa-twitter"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fab fa-linkedin-in"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fab fa-pinterest-p"></i>
+					</a>
+				</li>
+			</ul>
+			<ul class="rn-post-love-n-view">
+				<li>
+					<button>
+						<i class="fas fa-heart"></i>
+					</button>
+					<span>1k</span>
+				</li>
+				<li>
+					<button>
+						<i class="far fa-eye"></i>
+					</button>
+					<span>50k</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</div>
+</div> -->
+<!-- End Single Post Social Share Buttons-->
+
+
+<div class="rn-section rn-section-light-gray rn-post-comments">
+<div class="container">
+			<a href="{% url 'comment' post_detail.pk %}">Add Comment</a>
+			<br><br>
+			{% if not post_detail.comments.all %}
+				No Comments ...
+			{% else %}
+			<div class="rn-comment-list">
+				<!-- <h2 class="rn-simple-title">4 Comments</h2> -->
+				{% for comment in post_detail.comments.all %}
+				<ul>
+					<li>
+						<div class="rn-comment-item">
+							<div class="rn-comment-thumb">
+								<img class="img-fluid" src="{% static 'blogapp/assets/images/author-1.jpg' %}" alt="John Doe" srcset="{% static 'blogapp/assets/images/author-1.jpg' %} 1x, {% static 'blogapp/assets/images/author-1@2x.jpg' %} 2x"/>
+							</div>
+							<div class="rn-comment-info">
+								<div class="rn-comment-meta">
+									<div class="rn-comment-name">{{ comment.name}}</div>
+									<div class="rn-comment-time">{{ comment.date_added}}</div>
+								</div>
+								<div class="rn-comment-meta">
+									<!-- <div class="rn-simple-title">Barbara Miller</div> -->
+									<h2 class="rn-simple-title">{{ comment.title}}</h2>
+								</div>
+								<div class="rn-comment-body">
+									<p>{{ comment.body}}</p>
+								</div>
+							</div>
+						</div>
+						<!-- End Comment Item-->
+					</li>
+				</ul>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<!-- End Comments-->
+
+		</div>
+	</div>
+</div>
+</div>
+</div>
+{% endblock %}
